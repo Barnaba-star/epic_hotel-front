@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "na7": {
+    "epic-grand-hotel": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -33,22 +33,20 @@
                 "replace": "src/app/Utils/enviroments/environment.ts",
                 "with": "src/app/Utils/enviroments/environment.prod.ts"
               }],
-            "budgets": [
-  {
-    "type": "initial",
-    "maximumWarning": "2mb",
-    "maximumError": "3mb"
-  },
-  {
-    "type": "anyComponentStyle",
-    "maximumWarning": "6kb",
-    "maximumError": "10kb"
-  }
-],
-
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ],
               "outputHashing": "all"
             },
-
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -64,15 +62,14 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "na7:build:production"
+              "buildTarget": "epic-grand-hotel:build:production"
             },
             "development": {
-              "buildTarget": "na7:build:development"
+              "buildTarget": "epic-grand-hotel:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
-
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n"
         },
