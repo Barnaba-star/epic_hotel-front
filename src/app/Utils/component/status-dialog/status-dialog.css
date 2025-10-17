@@ -1,0 +1,104 @@
+/* Dialog container */
+.mat-mdc-dialog-container {
+  border-radius: 16px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Title section */
+.dialog-title {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  padding: 20px;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Status-specific colors */
+.dialog-title.success {
+  background: #e6f7e6;
+  color: #2e7d32;
+}
+.dialog-title.error {
+  background: #fdecea;
+  color: #c62828;
+}
+.dialog-title.warning {
+  background: #fff8e1;
+  color: #f9a825;
+}
+.dialog-title.info {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+/* Icon */
+.status-icon {
+  width: 86px;
+  height: 86px;
+  animation: pop 1.5s ease-in-out;
+}
+
+/* Pop animation for icon */
+@keyframes pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Content */
+.dialog-content {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Button */
+.close-btn {
+  color: #444;
+  font-weight: 600;
+  width: 100px;
+  margin: 8px;
+  border-radius: 8px;
+  padding: 6px 16px;
+  transition: background 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+
+/* Title */
+h2[mat-dialog-title] {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+/* Icon style */
+h2[mat-dialog-title] mat-icon {
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+/* Content */
+mat-dialog-content {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* Close button */
+mat-dialog-actions button {
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: 500;
+}

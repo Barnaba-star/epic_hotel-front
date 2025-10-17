@@ -1,0 +1,169 @@
+
+
+
+.divCheckBox {
+  align-items: center;      
+  justify-content: space-between; 
+  width: 100%;              
+  padding: 1rem;             
+  box-sizing: border-box;    
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 24px;
+  padding: 24px;
+}
+
+.permission-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.workflow-card {
+  background-color: #e2e4e3;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Scroll handling */
+  max-height: 300px;   /* unaweza adjust kulingana na design */
+  max-width: 100%;     /* unaweza pia kupunguza kama unataka fixed width */
+  overflow-y: auto;    /* scroll ya vertical (chini) */
+  overflow-x: auto;    /* scroll ya horizontal (pembeni) */
+}
+
+
+.workflow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.workflow-card h3 {
+  margin-top: 0;
+  color: #1976d2; /* blue accent */
+  font-size: 0.8rem;
+}
+
+.workflow-card p {
+  margin: 6px 0;
+  color: #444;
+}
+
+.workflow-card p span {
+  font-weight: 600;
+  color: #333;
+}
+
+.workflow-card .nested {
+  margin-top: 10px;
+}
+
+.workflow-card ul {
+  padding-left: 20px;
+  margin: 6px 0;
+}
+
+.workflow-card li {
+  margin: 3px 0;
+  padding: 3px 6px;
+  border-left: 3px solid #1976d2;
+  background: #f9f9f9;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+.process-flow-header {
+  display: flex;
+  justify-content: space-between; /* inasukuma title kushoto, icon kulia */
+  align-items: center; /* inalinganisha vertically */
+  margin-bottom: 12px;
+}
+
+.process-flow-header h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+.process-flow-header mat-icon {
+  font-size: 15px;
+  color: #1976d2; /* rangi ya blue material */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.process-flow-header mat-icon:hover {
+  transform: scale(1.2); /* effect ndogo ya zoom */
+}
+
+.action-btn{
+align-items: flex-end;
+}
+
+
+
+
+
+
+
+
+
+
+
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute; /* au fixed depending on context */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  text-align: center;
+  padding: 40px 20px;
+  color: #3c3f3e;
+}
+
+
+.no-data-icon {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.no-data-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+.app-icon {
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
+  color: rgb(81, 95, 88);
+  animation: bounce 1s infinite; 
+}
+
+/* Keyframes ya bounce */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+
+.boder{
+ color: rgb(25, 101, 58);
+ height: 200px;
+ border-radius: 90px;
+}

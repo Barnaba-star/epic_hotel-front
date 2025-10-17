@@ -1,0 +1,266 @@
+<app-tabs [tabs]="tabs" (selectedIndexChange)="onSelectedTabChange($event)"></app-tabs>
+
+@if (selectedTabIndex === 0 && processFlowRole === loggedUserRole) {
+<div class="wrapper" style="border-radius: 20px; background-color: white">
+  <div class="notification-box">
+    <div class="message" style="margin-left: 15px">
+      <strong
+        ><span>{{ processNO }}</span></strong
+      ><span> Request is in </span> your Office
+      <span class="role-name">({{ processFlowRole }})</span>.
+      <mat-divider></mat-divider>
+      <br />
+      You are required to <strong>review, take action,</strong> and <strong>progress</strong
+      ><strong
+        ><span> {{ processNO }}</span></strong
+      >
+      request to the next appropriate level. <br /><br />
+      Your prompt response is essential to ensure timely processing of this request.
+      <br />
+      Thank you for your cooperation and commitment to effective service delivery.
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="firstright">
+    <div class="position">
+      <mat-icon
+        svgIcon="position"
+        style="width: 80px; height: 150px; color: rgba(182, 150, 109, 0.95)"
+        class="bounce"
+      ></mat-icon>
+    </div>
+  </div>
+</div>
+
+}@if(selectedTabIndex === 0 && processFlowRole !== loggedUserRole){
+<div class="wrapper" style="border-radius: 20px; background-color: white">
+  <div class="notification-box" style="background-color: rgb(181, 143, 143)">
+    <div class="message" style="margin-left: 15px">
+      <strong
+        ><span>{{ processNO }}</span></strong
+      ><span> Request is in </span> <span class="role-name">({{ processFlowRole }})</span> Office
+      <br /><br />
+      <mat-divider></mat-divider>
+      <br />
+      You are not required to <strong>review, take action,</strong> and
+      <strong>progress</strong> this request to the next appropriate level. <br /><br />
+      Your prompt response is essential to ensure timely processing of this workflow.
+      <br />
+      <strong>Thank you</strong> for your cooperation and commitment to effective service delivery.
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>
+}@if (selectedTabIndex === 1 && processFlowRole === loggedUserRole) {
+<div class="wrapper" style="border-radius: 20px; background-color: white">
+  <div class="notification-box">
+    <div class="message" style="margin-left: 15px">
+      <strong
+        ><span>{{ processNO }}</span> Request
+      </strong>
+      requires your actions as <span class="role-name"> ({{ processFlowRole }})</span>. <br /><br />
+      <mat-divider></mat-divider>
+      <br />
+      Kindly take the necessary steps to review and act on this
+      <strong
+        ><span>{{ processNO }}</span></strong
+      >, as it pertains directly to your office and falls under your responsibility. Your timely
+      intervention is essential to ensure that the process continues smoothly and without
+      unnecessary delays. We highly appreciate your support and commitment in fulfilling this role.
+      <br />
+
+      <mat-divider class="divider">-------------------------------</mat-divider>
+      <div *ngIf="actionsData.length > 0" class="actionData">
+        <div *ngFor="let action of actionsData" class="action-item" (click)="takeAction(action)">
+          <p style="color: blue; cursor: pointer">
+            {{ action.name }}
+          </p>
+        </div>
+      </div>
+
+      <mat-divider class="divider">-------------------------------</mat-divider>
+
+      <div
+        class="card-footer d-flex justify-content-between align-items-center"
+        style="background-color: white; margin-top: 10px"
+      >
+        <button
+          *ngIf="workflowStatus !== 'start'"
+          style="background-color: white"
+          class="btn btn-outline-success d-flex justify-content-center align-items-center gap-1"
+          [disabled]="processFlowRole !== loggedUserRole"
+          (click)="rollback()"
+        >
+          <img src="assets/icons/rollback.svg" alt="undo icon" />
+          Rollback
+        </button>
+
+        <button
+          *ngIf="workflowStatus !== 'end'"
+          style="background-color: white"
+          class="btn btn-outline-success d-flex justify-content-center align-items-center gap-1"
+          [disabled]="processFlowRole !== loggedUserRole"
+          (click)="forward()"
+        >
+          Forward
+          <img src="assets/icons/forward.svg" alt="undo icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rightside">
+    @if(actionMode){
+    <div right>
+      <mat-form-field appearance="outline" style="width: 100%; height: 210px">
+        <mat-label>Enter your comment</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="actionComment"
+          rows="1"
+          placeholder="Type something..."
+        ></textarea>
+      </mat-form-field>
+      <div class="mt-1 text-end" style="width: 100%; height: 20px">
+        <button
+          mat-button
+          color="primary"
+          (click)="submitAction()"
+          style="width: 50%; height: 50px; background-color: white"
+        >
+          Submit
+        </button>
+        <button
+          mat-button
+          color="warn"
+          (click)="cancelAction()"
+          style="width: 50%; height: 50px; background-color: white"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    }
+   
+    @if(actionCompletion){
+    <div right>
+          <mat-icon
+        svgIcon="success"
+        style="width: 80px; height: 180px; color: rgba(182, 150, 109, 0.95); margin-left: 210px;"
+        class="bounce"
+      ></mat-icon>
+      <p style="color: green;  font-size: 20px;"> Registered NO:  {{    regNumber}}</p>
+      <div class="mt-1 text-end" style="width: 100%; height: 20px">
+        <button
+          mat-button
+          color="primary"
+          (click)="completeProcess()"
+          style="width: 50%; height: 50px; background-color: white"
+        >
+          Complete Process
+        </button>
+        <button
+          mat-button
+          color="warn"
+          (click)="cancelAction()"
+          style="width: 50%; height: 50px; background-color: white"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+    }
+    @if(! actionMode && ! actionCompletion){
+    <div class="action-container">
+      <mat-icon
+        svgIcon="process"
+        style="width: 80px; height: 180px; color: rgba(182, 150, 109, 0.95)"
+        class="bounce"
+      ></mat-icon>
+      <span class="bounce">Take action</span>
+    </div>
+
+    }
+  </div>
+</div>
+
+}@if (selectedTabIndex === 1 && processFlowRole !== loggedUserRole) {
+<div class="wrapper">
+  <div class="notification-box" style="background-color: rgb(181, 143, 143)">
+    <div class="message" style="margin-left: 15px">
+      <strong
+        ><span>{{ processNO }}</span>
+      </strong>
+      <strong>Request, current is at <span> </span></strong>
+      <span class="role-name">({{ processFlowRole }})</span>. Office<br /><br />
+      <mat-divider></mat-divider>
+      <br />
+      This request is currently being handled at the
+      <strong>{{ processFlowRole }}</strong> office. Since it does not fall under your current role,
+      no action is required from your side at this moment. For any clarifications, please contact
+      the responsible office.
+      <br />
+      <mat-divider></mat-divider>
+      <strong>Thank you</strong> for your cooperation and commitment to effective service delivery.
+    </div>
+  </div>
+</div>
+}@if(selectedTabIndex === 2 && processFlowRole === loggedUserRole){
+<div class="history-wrapper">
+  <div *ngIf="historyData.length > 0; else noHistory">
+    <div class="history-data row" style="margin-top: 40px">
+      <div class="column" style="margin-left: 0px; font-size: 17px"><strong>S/No</strong></div>
+      <div class="column" style="margin-left: 25px; font-size: 17px"><strong>Process</strong></div>
+      <div class="column" style="margin-left: 25px; font-size: 17px"><strong>Status</strong></div>
+      <div class="column" style="margin-left: 25px; font-size: 17px"><strong>Comment</strong></div>
+      <div class="column" style="margin-left: 25px; font-size: 17px"><strong>By</strong></div>
+      <div class="column" style="margin-left: 25px; font-size: 17px"><strong>Acted At</strong></div>
+      <div class="column" style="margin-left: 40px; font-size: 17px">
+        <strong>Direction</strong>
+      </div>
+    </div>
+    <div *ngFor="let data of historyData" class="history-data row">
+      <div class="column">{{ data.index }}</div>
+      <div class="column">{{ data.processType }}</div>
+      <div class="column">{{ data.status }}</div>
+      <div class="column">{{ data.comment }}</div>
+      <div class="column">
+        <strong>{{ data.firstName }}@{{ data.role }}</strong>
+      </div>
+      <div class="column">{{ data.time }}</div>
+      <div class="column" style="width: 4px; text-align: left; margin-left: 25px">
+        <mat-icon svgIcon="arrowdown"></mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noHistory>
+    <div
+      class="action-container"
+      style="display: flex; justify-content: center; align-items: center; height: 50vh"
+    >
+      <mat-icon
+        svgIcon="person"
+        style="width: 80px; height: 80px; color: rgba(182, 150, 109, 0.95)"
+        class="bounce"
+      ></mat-icon>
+      <span class="bounce">No History Found</span>
+    </div>
+  </ng-template>
+</div>
+
+}@if(selectedTabIndex === 2 && processFlowRole !== loggedUserRole){
+<div
+  class="action-container"
+  style="display: flex; justify-content: center; align-items: center; height: 50vh"
+>
+  <mat-icon
+    svgIcon="history"
+    style="width: 80px; height: 80px; color: rgba(182, 150, 109, 0.95)"
+    class="bounce"
+  ></mat-icon>
+  <span class="bounce">No History Found</span>
+</div>
+}

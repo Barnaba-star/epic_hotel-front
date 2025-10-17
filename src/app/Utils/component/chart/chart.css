@@ -1,0 +1,12 @@
+:host {
+  display: block;
+  width: 100%;
+}
+ngx-charts-line-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+ngx-charts-legend .legend-title {
+  display: none;
+}

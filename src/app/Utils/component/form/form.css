@@ -1,0 +1,121 @@
+form {
+  background-color: white;
+  width: 95%;
+margin-left: 10px;
+ 
+}
+
+
+.form-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Field wrapper */
+.form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 95%; 
+  margin-left: 20px;
+
+ 
+
+}
+
+
+.mat-grid-tile:last-child .form-field-wrapper {
+  border-bottom: none;
+}
+
+.form-field-wrapper label {
+  font-weight: 500;
+  font-size: 18px;
+  color: #111111;
+ 
+}
+
+.form-control:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1px; 
+}
+
+.radio-button {
+  margin: 0;
+  padding: 0;
+}
+
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 1px;
+}
+
+button[type="submit"] {
+  margin-top: 2px;
+  width: 100%;
+  background-color: #939ca5;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #125ea2;
+}
+.w-100 {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+
+}
+
+.fab-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+:host ::ng-deep mat-grid-tile {
+  border-radius: 1px; 
+  overflow: hidden; 
+}
+
+:host ::ng-deep mat-grid-list {
+  border-radius: 1px; 
+  overflow: hidden;
+}
+:host ::ng-deep .mat-mdc-dialog-surface {
+  border-radius: 1px !important;
+}
+/* Hii itaficha asterisks kwenye mat-label */
+mat-form-field .mat-form-field-label-required {
+  display: none;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-radius: 8px;
+}
+
+::ng-deep .mat-option.selected-option {
+  font-weight: bold;
+  color: blue;
+}
+
+

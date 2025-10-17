@@ -1,0 +1,89 @@
+<app-header></app-header>
+<app-sidenav [menuItems]="menu" (menuItemClicked)="onMenuItemClicked($event)">
+  <app-title [titleHeader]="titleHeader" [showBackButton]="true"></app-title>
+  <app-tabs [tabs]="tabs" (selectedIndexChange)="selectedIndexChange($event)"></app-tabs>
+
+  @if(selectedTabIndex === 0){ @if( dataSource.data.length>0){
+  <app-table
+    [dataSource]="dataSource"
+    [columnHeaderMap]="tableConfigUser.columnHeaderMap"
+    [displayedColumns]="tableConfigUser.displayedColumns"
+    (editEvent)="onEditUserDialog($event)"
+    (deleteEvent)="requestToDeleteUser($event)"
+    (search)="onSearchUser($event)"
+  >
+  </app-table>
+  } @if(user.length === 0 || dataSource.data.length === 0){
+  <app-no-data-found message="No User Found"></app-no-data-found>
+  } @if (deleteUser) {
+  <app-delete-dialog
+    [message]="'Are you sure you want to Delete ?'"
+    [icon]="'assets/icons/question.svg'"
+    (confirm)="coonfirmDeleteUser()"
+    (cancel)="oncancellDeleteuser()"
+  ></app-delete-dialog>
+  }
+  <app-fab-button [tooltip]="'Add User'" [icon]="'add'" (click)="addUserDialog()"></app-fab-button>
+  } @if(selectedTabIndex === 1){ @if(user.length > 0 || dataSource.data.length>0){
+  <app-table
+    [dataSource]="dataSource"
+    [columnHeaderMap]="tableConfigUser.columnHeaderMap"
+    [displayedColumns]="tableConfigUser.displayedColumns"
+    [showEdit]="false"
+    [showDelete]="false"
+    [showMore]="false"
+    [showCheckbox]="true"
+    (checkboxChanged)="onCheckboxChanged($event)"
+    (search)="onSearchUser($event)"
+  >
+  </app-table>
+  } @if(user.length === 0 || dataSource.data.length === 0){
+  <app-no-data-found message="No User Found"></app-no-data-found>
+  } }
+
+ @if (selectedTabIndex === 2) { @if( showAllRoles===false){
+  <app-table
+    [dataSource]="dataSource"
+    [columnHeaderMap]="tableConfigUser.columnHeaderMap"
+    [displayedColumns]="tableConfigUser.displayedColumns"
+    [showMore]="true"
+    [showDelete]="false"
+    [showEdit]="false"
+    (moreEvent)="findRoleByUserUID($event)"
+    (search)="onSearchUser($event)"
+  >
+  </app-table>
+  } @if(showAllRoles === true){
+  <p style="margin-left: 20px; font-size: 17px; font-weight: 200px; font-style: italic;"> {{userName}} [{{userUserName}}]</p>
+  <mat-divider style="background-color: black;">----</mat-divider>
+  <div class="divCheckBox">
+    <div *ngFor="let role of AllRoles" class="permission-item">
+      <input 
+      type="checkbox" 
+      [checked]="checkIfUserContainsThisRole(role)" 
+      (change)="onRoleToggle(role, $event)"
+      />
+      {{ role.name }}  
+    </div>
+  </div>
+<div style="margin-top: 50px;">
+  <app-button
+          label="Save Role"
+          icon="save"
+          color="accent"
+          type="submit"
+          (clicked)="saveRole()"
+        >
+        </app-button>
+       <app-button
+          label="Cancel"
+          icon="close"
+          color="accent"
+          type="submit"
+          (clicked)="cancellSaveRole()"
+        >
+   </app-button>
+</div>
+  } }
+</app-sidenav>
+<app-footer></app-footer>

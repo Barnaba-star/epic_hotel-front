@@ -1,0 +1,32 @@
+.divCheckBox {
+  align-items: center;      
+  justify-content: space-between; 
+  width: 100%;              
+  padding: 1rem;             
+  box-sizing: border-box;    
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 24px;
+  padding: 24px;
+ position: relative;
+}
+
+.permission-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+
+
+/* Weka divider chini ya kila item ya mwisho wa row */
+.permission-item:nth-child(4n)::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background-color: #ddd;
+  grid-column: 1 / -1;
+  margin-top: 24px;
+}

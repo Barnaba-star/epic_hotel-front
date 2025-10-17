@@ -1,0 +1,50 @@
+<mat-toolbar color="primary" class="main-toolbar">
+   
+       <mat-icon svgIcon="arrowback" class="app-icon" (click)="onBack()"></mat-icon>
+   
+ 
+  <span class="app-title">{{titleHeader}}</span>
+  <span class="spacer"></span>
+
+<div class="toolbar-actions" (click)="onShow()" style="position: relative;">
+  <div class="pill-wrapper">
+    <!-- Icon -->
+    <img src="assets/icons/personnel.svg" alt="icon" class="pill-icon" />
+
+    <!-- Input -->
+    <input matInput class="pill-input" />
+
+    <!-- Names -->
+    <span class="pill-name" style="margin-right: 40px;">{{ role | uppercase }}</span>
+  </div>
+@if(show){
+<div class="show-popup">
+ <div class="row-item" (click)="goToPersonnel()" >
+    <mat-icon svgIcon="profile" class="icons"></mat-icon>
+    <p class="para">Profile</p>
+  </div>
+  <mat-divider></mat-divider>
+
+<div class="row-item" (click)="changePassword()">
+    <mat-icon svgIcon="changepassword" class="icons"></mat-icon>
+    <p class="para">Change Password</p>
+  </div>
+  <mat-divider></mat-divider>
+
+  <!-- Row ya icon + paragraph -->
+  <div class="row-item" (click)="onLogout()">
+    <mat-icon svgIcon="logout" class="icons"></mat-icon>
+    <p class="para">Logout</p>
+  </div>
+  
+  <mat-divider></mat-divider>
+</div>
+
+} 
+</div>
+</mat-toolbar>
+
+
+
+
+

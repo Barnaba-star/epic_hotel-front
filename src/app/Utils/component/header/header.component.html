@@ -1,0 +1,34 @@
+<mat-toolbar class="custom-toolbar">
+  <!-- App Name -->
+
+
+<span>
+ <button class="icon-btn" aria-label="Brightness" >
+  <img [src]="'/assets/icons/brightness.svg'" alt="Brightness" />
+</button>
+
+</span>
+
+  
+  <span class="spacer"></span>
+
+  <!-- Page Title -->
+  <span class="page-title">{{ title }}</span>
+  
+  <span class="spacer"></span>
+
+  <!-- Notification Icon -->
+  <button class="icon-btn" aria-label="Notifications">
+    <img [src]="'/assets/icons/notification.svg'" alt="view" />
+  </button>
+
+  <!-- Full Screen Icon -->
+  <button class="icon-btn" aria-label="Fullscreen" ng se>
+    <img [src]="'/assets/icons/fullscreen.svg'" alt="view" />
+  </button>
+
+  <!-- Logout Icon -->
+  <button class="icon-btn" aria-label="Logout" (click)="onLogout()">
+  <img [src]="'/assets/icons/logout.svg'" alt="view" />
+  </button>
+</mat-toolbar>

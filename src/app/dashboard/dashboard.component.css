@@ -1,0 +1,107 @@
+.dashboard-container {
+  display: flex;
+  justify-content: center;       /* center horizontally */
+  align-items: flex-start;       /* start vertically so cards stack from top */
+  padding: 40px;                 /* uniform padding around container */
+  gap: 30px;                     /* space between container edges and cards */
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-image: url('/assets/images/newfour.jpg'); 
+
+}
+
+/* Card grid inside container */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;              
+  gap: 10px;                    
+  justify-content: center;       
+  width: 80%;
+}
+
+
+.custom-card {
+  position: relative;        /* card container relative for absolute children */
+  width: 300px;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 10px;
+  padding: 16px;
+  background-color: #a65e5e;
+  opacity: 0;
+  animation: fadeInBg 2s ease-in forwards;
+  background-color: #7d8084;
+}
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+    transform: scale(1.05); 
+  }
+  to {
+    opacity: 1
+    
+  }
+} 
+
+
+
+
+.app-icon {
+  position: absolute;
+  top: 50%;                  
+  left: 50%;                 
+  transform: translate(-50%, -50%); /* husogeza ili iwe katikati */
+  
+  width: 200px;
+  height: 200px;
+  font-size: 70px;
+
+  color: rgba(211, 199, 183, 0.2); /* faded background effect */
+  z-index: 0;
+  pointer-events: none; /* isizuie clicks */
+  margin-top: 60px;
+}
+
+.header-icon{
+color: white;
+ font-size: 20px;
+}
+
+
+
+mat-card-header,
+mat-card-content {
+  position: relative;        /* elements za juu icon */
+  z-index: 1;                /* juu ya icon background */
+}
+
+mat-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;                 /* space kati ya icon na title */
+  margin-bottom: 30px;
+}
+
+mat-card-header h4{
+  margin: 0;
+  font-size: 25px;
+ 
+}
+h4 img {
+  margin-left: 8px;   /* space ndogo upande wa kushoto */
+  vertical-align: middle; /* ikae sawa na maandishi */
+  width: 20px;        /* adjust size ya icon */
+  height: 20px;
+}
+
+.description{
+font-style: initial;
+}
+
+.custom-divider {
+  height: 2px;                /* thickness */
+  background-color: #8d7979;  /* rangi */
+  margin: 12px 0;             /* spacing juu na chini */
+  border-radius: 1px;         /* rounded edges kidogo */
+}

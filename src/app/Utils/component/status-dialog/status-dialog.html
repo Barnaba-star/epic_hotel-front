@@ -1,0 +1,13 @@
+<h2 mat-dialog-title class="dialog-title" [ngClass]="data.status">
+  <img [src]="'icons/' + icon + '.svg'" class="status-icon" />
+  <span>{{ data.title || (data.status | titlecase) }}</span>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" *ngIf="data.showClose !== false">
+  <button mat-button class="close-btn" (click)="close()">Close</button>
+</mat-dialog-actions>
+

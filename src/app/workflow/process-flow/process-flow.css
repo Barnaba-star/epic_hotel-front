@@ -1,0 +1,383 @@
+.wrapper {
+  display: flex;
+  gap: 10px; /* nafasi kati ya message na rightside */
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* Message part (75%) */
+.notification-box {
+  flex: 0 0 65%;
+  background-color: white;
+  border-left: 4px solid #d8dfe4;
+  padding: 30px;
+  border-radius: 20px;
+ box-shadow: 0 2px 0 rgb(22, 1, 1); /* Sharp and solid */
+  display: flex;
+  gap: 4px;
+  animation: bounce 30s infinite;
+}
+
+/* Inside the message */
+.notification-box mat-icon {
+  font-size: 28px;
+  margin-top: 4px;
+}
+
+.notification-box .message {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.7;
+  flex: 1;
+ animation: bounce 30s infinite;
+}
+
+.notification-box .role-name {
+  color: #2562a9;
+  font-weight: 600;
+}
+
+
+
+.rightside {
+  flex: 0 0 35%;
+  background-color: white;
+  padding: 16px;
+  border-radius: 20px;
+  border: 2px solid #ccc; /* Hii ndiyo border mpya - unaweza kubadilisha rangi */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-height: 420px; 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  animation: bounce 30s infinite;
+}
+
+
+.right {
+  flex: 0 0 35%;
+  background-color: #e8f4fd;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-height: 260px; 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 1200px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .notification-box,
+  .rightside {
+    flex: 0 0 100%;
+  }
+}
+
+
+.bounce {
+    animation: bounce 30s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .action-container {
+    margin-top: 150px;
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    animation: bounce 30s infinite;
+  }
+
+
+
+
+.registration{
+opacity: 0;
+  animation: fadeInBg 0.5s ease-in forwards;
+}
+@keyframes fadeInBg {
+  from {
+    opacity: 0;
+    transform: scale(1.05); 
+  }
+  to {
+    opacity: 1
+    
+  }
+} 
+.center-flex {
+  display: flex;
+  justify-content: center; /* katikati horizontal */
+  align-items: center;     /* katikati vertical */
+  height: 50px;           /* au unayopenda kwa parent */
+}
+
+
+.profile-container {
+  display: flex;
+  gap: 20px;
+  background-color: rgb(248, 244, 244);
+  border-radius: 20px;
+   box-shadow: 0 4px 12px rgba(99, 99, 98, 0.3);
+  flex-wrap: wrap; /* Responsive */
+  animation: bounce 30s infinite;
+}
+
+
+/* Profile Picture Column */
+.profile-picture-column {
+  flex: 0 0 150px; /* Fixed width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+ border-radius: 20px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* Other Columns (2, 3, 4) */
+.profile-info-column {
+  flex: 1; /* Take equal space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-row {
+  padding: 8px 0;
+  font-size: 16px;
+  color: #333;
+}
+.app-icon{
+
+width: 100px;
+height: 100px;
+font-size: 50px;
+color: rgb(168, 177, 143);
+ border-radius: 20px;
+}
+
+.icons{
+background-color: white;
+display: flex;
+flex-direction: row;
+align-items: center;   
+justify-content: center; 
+gap: 0px;
+ animation: slideUp 0.6s ease;
+}
+.profile-icon{
+width: 30px;
+height: 30px;
+font-size: 30px;
+color: rgb(156, 179, 207);
+
+
+  
+}
+.profile-title-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+ animation: slideUp 0.6s ease;
+}
+
+.profile-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+  margin: 0;
+  background-color: rgb(205, 199, 199);
+ animation: slideUp 0.6s ease;
+}
+.forward-icon{
+  font-size: 48px;
+  height: 30px;
+  width: 30px;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+  margin: 0;
+}
+.profile-wrapper {
+
+  border-radius: 50px;
+ transform-origin: left center;
+  animation: pageTurn 0.5s ease-in-out;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+ animation: slideUp 1s ease;
+ border-radius: 20px;
+
+}
+.dependant-wrapper {
+  background-color: white;
+  border-radius: 50px;
+  transform-origin: left center;
+  animation: pageTurn 0.5s ease-in-out;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+ animation: slideUp 1.5s ease;
+  padding-bottom: 15px;
+ animation: slideUp 1s ease;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.dependants-container {
+  display: flex;
+  flex-wrap: nowrap; /* hakikisha hairuki mstari mpya */
+  gap: 16px;
+  overflow-x: auto;  /* wezesha horizontal scroll */
+  padding-bottom: 8px; /* space kidogo chini */
+ animation: slideUp 1s ease;
+}
+
+.dependant-card {
+  background: #d0d4d1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-width: 200px; /* tumia min-width badala ya width ili iwe flexible */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-shrink: 0; /* zisibanwe */
+ animation: slideUp 1s ease;
+}
+
+
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  object-fit: cover;
+ animation: slideUp 1s ease;
+}
+
+.profile-picture-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ border-radius: 20px;
+  background-color: rgb(182, 188, 182);
+  width: 150px;
+  height: 150px;
+ animation: slideUp 1s ease;
+}
+.accodiod {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0px;
+  box-shadow: 0 4px 12px rgba(99, 99, 98, 0.3);
+  color: white; 
+  margin-top: 5px;
+ animation: slideUp 1s ease;
+}
+
+
+
+
+.divider {
+  margin: 20px 0;
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.actionData {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: row; /* badala ya column */
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+.action-item {
+  padding: 12px;
+  transition: background-color 0.3s ease;
+  width: calc(33.33% - 8px); 
+}
+
+.action-item:hover {
+  background-color: #f0f8ff;
+}
+
+
+.firstright{
+ flex: 0 0 35%;
+  background-color: white;
+  padding: 16px;
+  border-radius: 20px;
+  border: 2px solid #ccc; /* Hii ndiyo border mpya - unaweza kubadilisha rangi */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  min-height: 100px; 
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  box-sizing: border-box;
+  animation: bounce 30s infinite;
+}
+.position{
+    margin-top: 35px;
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    animation: bounce 30s infinite;
+}
+
+.history-wrapper {
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: black;
+  margin-top: 30px;
+  background-color: white;
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 0;
+}
+
+.column {
+  flex: 1;
+  padding: 4px 8px;
+}
+

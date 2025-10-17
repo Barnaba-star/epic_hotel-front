@@ -1,0 +1,104 @@
+/* Container ya login page */
+.login-container {
+  height: 100vh;               
+  display: flex;
+  justify-content: center;      
+  align-items: center;          
+  background-image: url('/assets/images/newfour.jpg'); 
+  background-size: cover;      
+  background-position: center;  
+  background-repeat: no-repeat;
+
+  /* optional animation fade-in + slow zoom */
+  animation: fadeInZoom 2s ease-in-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes fadeInZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Card ya login */
+.login-card {
+  width: 350px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: rgba(255, 255, 255, 0.9); /* slight transparency juu ya background */
+  text-align: center;
+    background-image: url('/assets/images/newfour.jpg'); 
+}
+
+
+
+/* Form fields full width */
+.full-width {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Button styling */
+button.full-width {
+  margin-top: 16px;
+}
+
+/* Optional: error messages styling */
+mat-error {
+  font-size: 13px;
+  color: #d32f2f;
+}
+/* Removes asterisk for all mat-form-fields */
+/* Removes asterisk only for password field */
+#passwordField .mat-form-field-required-marker {
+  display: none;
+}
+
+/* Icon ya kushoto ya username */
+.mat-form-field mat-icon[matSuffix][svgIcon="username"] {
+  color: #ffeb3b; /* njano */
+}
+
+/* Icon ya kushoto ya password */
+.mat-form-field mat-icon[matSuffix][svgIcon="password"] {
+  color: #42a5f5; /* blue */
+}
+
+/* Icon ya kulia ya password (show/hide) */
+.mat-form-field mat-icon[matSuffix][svgIcon="visibility"] {
+  color: #ff7043; /* orange/red */
+}
+/* Icon kubwa juu ya form */
+.login-icon {
+  display: flex;
+  justify-content: center;
+ 
+  color: rgb(191, 160, 104); 
+}
+
+.app-icon {
+  width: 80px;
+  height: 80px;
+  font-size: 80px;
+  color: rgb(191, 160, 104); 
+}
+.prefix-logo {
+  height: 40%;       
+  width: auto;        
+  object-fit: contain; 
+  border-radius: 100px;
+}
+
+input.mat-input-element:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+

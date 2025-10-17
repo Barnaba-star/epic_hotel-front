@@ -1,0 +1,46 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th style="width: 50px; ">S/NO:</th> <!-- ✅ Serial Number Column -->
+      @for (col of columns; track col) {
+        <th>{{ col.header }}</th>
+      }
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if (data.length > 0) {
+      @for (row of data;  track row) {
+        <tr>
+         <td>{{ getIndex(row) }}</td>
+
+          @for (col of columns; track col) {
+            <td>{{ row[col.field] }}</td>
+          }
+          <td>
+            @if (showView) {
+              <button (click)="onView(row)" class="btn btn-sm btn-outline-primary" title="View">
+                <img [src]="'assets/icons/more.svg'" alt="view" />
+              </button>
+            }
+            @if (showEdit) {
+              <button (click)="onEdit(row)" class="btn btn-sm btn-outline-primary" title="Edit">
+                <img [src]="'assets/icons/edit.svg'" alt="edit" />
+              </button>
+            }
+            @if (showDelete) {
+              <button (click)="onDelete(row)" class="btn btn-sm btn-outline-danger" title="Delete">
+                <img [src]="'assets/icons/delete.svg'" alt="delete" style="color: rgb(214, 21, 21);"/>
+              </button>
+            }
+            @if (showDoc) {
+              <button (click)="onOpenDoc(row)" class="btn btn-sm btn-outline-secondary" title="Open Document">
+                <img [src]="'assets/icons/open.svg'" alt="document" />
+              </button>
+            }
+          </td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>

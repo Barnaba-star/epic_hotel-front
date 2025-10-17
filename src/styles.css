@@ -1,0 +1,63 @@
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  filter: brightness(100%);
+  transition: filter 0.3s ease-in-out;
+
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #333333; 
+  background-color: #f9f9f9; 
+}
+
+
+
+body.bright-mode {
+  filter: brightness(140%);
+  color: #000000; /* Bright mode font color */
+  background-color: #ffffff;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0;
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  caret-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.full-screen-dialog {
+  max-width: none !important;
+  width: 70vw !important;
+  height: 80vh !important;
+}
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box; /* epuka scroll zisizohitajika kwa padding/border */
+}
+
+/* Hii inazuia scroll ya kulia-kushoto (horizontal) kwenye ukurasa mzima */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;   /* 🔒 Zuia horizontal scroll kabisa */
+  overflow-y: auto;     /* ⬇️ Ruhusu vertical scroll */
+  font-family: sans-serif; /* optional styling */
+}
+
+/* Optional: Zuia watoto wowote kuvuka viewport */
+body > * {
+  max-width: 100vw;     /* 🚫 Hakuna element ivuke screen width */
+  overflow-x: hidden;
+}

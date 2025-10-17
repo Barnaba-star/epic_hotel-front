@@ -1,0 +1,17 @@
+<div class="modal-backdrop">
+  <div class="modal-card">
+    <div class="modal-content">
+      <div *ngIf="icon" class="icon-container">
+        <img [src]="icon" alt="icon" class="icon" />
+      </div>
+
+      <p>{{ message }}</p>
+
+      <div class="modal-actions">
+        <button class="cancel-btn" (click)="onCancel()">Cancel</button>
+        <button class="delete-btn" (click)="onConfirm()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

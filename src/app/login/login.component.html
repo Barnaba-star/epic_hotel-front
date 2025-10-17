@@ -1,0 +1,35 @@
+<div class="login-container">
+  <mat-card class="login-card">
+   
+
+    <div class="login-icon">
+      <img src="assets/icons/logo.png" alt="logo" width="92" height="92">
+
+    </div>
+
+ <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+ <mat-form-field appearance="outline" class="full-width">
+  <mat-icon matSuffix svgIcon="username"></mat-icon>
+  <mat-label><strong>Username:</strong></mat-label>
+  <input matInput formControlName="username" type="text">
+</mat-form-field>
+
+
+
+ <mat-form-field id="passwordField" appearance="outline" class="full-width">
+  <mat-icon matSuffix svgIcon="password"></mat-icon>
+  <mat-label><strong>Password:</strong></mat-label>
+  <input matInput formControlName="password" type="password">
+  <mat-error *ngIf="password?.hasError('required') && password?.touched">
+    Password is required
+  </mat-error>
+</mat-form-field>
+
+
+      <button mat-raised-button color="Accent" class="full-width" type="submit" >
+        Login
+      </button>
+    </form>
+  </mat-card>
+</div>

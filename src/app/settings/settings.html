@@ -1,0 +1,215 @@
+<app-header></app-header>
+<app-sidenav [menuItems]="menu" (menuItemClicked)="onMenuItemClicked($event)">
+  <app-title [titleHeader]="titleHeader" [showBackButton]="true"></app-title>
+  <app-tabs [tabs]="tabs" (selectedIndexChange)="selectedIndexChange($event)"></app-tabs>
+
+  @if (role || workflow || levels) { } @if(selectedTabIndex === 0 && role){
+  <div [@fadeIn]>
+    <app-div-one-partition>
+      <div panel-body>
+        @if(roles.length > 0){
+        <app-table
+          [dataSource]="dataSourseRole"
+          [displayedColumns]="tableConfig.displayedColumns"
+          [columnHeaderMap]="tableConfig.columnHeaderMap"
+          [showEdit]="true"
+          [showDelete]="true"
+          (editEvent)="editRoleDialog($event)"
+          (deleteEvent)="onRequestToDeleteRole($event)"
+          (search)="onSearchRole($event)"
+        >
+        </app-table>
+
+        } @if(roles.length === 0){
+        <app-no-data-found message="No Role Found"></app-no-data-found>
+        } @if (showDeleteRole) {
+        <app-delete-dialog
+          [message]="'Are you sure you want to Delete ?'"
+          [icon]="'assets/icons/question.svg'"
+          (confirm)="deleteRole()"
+          (cancel)="oncDeleteRoleCancelled()"
+        ></app-delete-dialog>
+        }
+      </div>
+    </app-div-one-partition>
+    <app-fab-button [tooltip]="'Add Role'" [icon]="'add'" (click)="addRoleDialog()">
+    </app-fab-button>
+  </div>
+  } @if(selectedTabIndex === 1 && permission){
+  <div [@fadeIn]>
+    <app-div-one-partition>
+      <!-- Panel Toolbar -->
+      <div panel-toolbar>
+        <app-dropdownselection
+          [label]="'Select Process'"
+          [options]="processes"
+          [selectedValue]="selectedProcess"
+          (selectionChange)="onProcessChange($event)"
+        >
+        </app-dropdownselection>
+
+        <app-dropdownselection style="margin-top: 100px;"
+          [label]="'Select Roles:::'"
+          [options]="rolesForPermisions"
+          [selectedValue]="selectedRole"
+          (selectionChange)="onRoleChange($event)"
+        >
+        </app-dropdownselection>
+
+        <app-button style="color: blue;"
+          label="Load Permission"
+          icon="load"
+          color="warn"
+          type="submit"
+          (clicked)="loadCompiledPermissions()"
+        >
+        </app-button>
+      </div>
+
+      <div panel-body *ngIf="showPermissions === true">
+        <div class="divCheckBox">
+          <label *ngFor="let permission of permissionsByModule" class="permission-item">
+            <input
+              type="checkbox"
+              [checked]="checkIfRoleContainPermission(permission)"
+              (change)="onPermissionToggle(permission, $event)"
+            />
+            {{ permission.name }}
+          </label>
+        </div>
+      </div>
+
+      <div panel-footer *ngIf="showPermissions === true">
+        <app-button
+          label="Save Permission"
+          icon="save"
+          color="accent"
+          type="submit"
+          (clicked)="saveRoleAndPermissions()"
+        >
+        </app-button>
+      </div>
+    </app-div-one-partition>
+  </div>
+  } @if(selectedTabIndex === 2 && workflow) {
+  <div [@fadeIn]>
+    <app-div-two-equal-partition>
+      <div panel-body>
+        @if(processType.length > 0) {
+        <app-recordtable
+          [data]="processType"
+          [columns]="recordColumns"
+          [showView]="true"
+          [showEdit]="true"
+          (editRecord)="openAllWorkflowEditDialog()"
+          (viewRecord)="onClickProcess($event)"
+        >
+        </app-recordtable>
+        } @if(processType.length ===0) {
+        <app-no-data-found message="No Process Flow Found"></app-no-data-found>
+        }
+      </div>
+      <div panel-body>
+        @if(workflowsData.length > 0) {
+        <div *ngFor="let wf of workflowsData" class="workflow-card">
+          <div class="process-flow-header">
+            <h3>#{{ wf.sequence }}: {{ wf.processType | uppercase }} FLOW</h3>
+
+              <img src="assets/icons/edit.svg" alt="edit" (click)="openWorkflowEditDialog(wf)" />
+              <img src="assets/icons/delete.svg" alt="delete" (click)="onDeleteRequestWorkflow(wf)" />
+          </div>
+           
+          <mat-divider>----------------------------------------</mat-divider>
+
+          <p><span>Sequence:</span> {{ wf.sequence }}</p>
+
+         
+          <div *ngIf="wf.levels?.length" class="nested">
+            <strong>Levels:</strong>
+            <ul>
+              <li *ngFor="let level of wf.levels">
+                {{ level.name }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Nested array (workflowActions) -->
+          <div *ngIf="wf.actions?.length" class="nested">
+            <strong>Actions:</strong>
+            <ul>
+              <li *ngFor="let action of wf.actions">
+                {{ action.name }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Nested array (workflowRoles) -->
+          <div *ngIf="wf.roles?.length" class="nested">
+            <strong>Roles:</strong>
+            <ul>
+              <li *ngFor="let role of wf.roles">
+                {{ role.name }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        } 
+@if(workflowsData.length === 0){
+<div class="action-container">
+  <mat-icon svgIcon="process" style="width: 80px; height: 80px;  color: rgba(182, 150, 109, 0.95); margin-top: 70px; margin-left: 250px;" class="bounce"></mat-icon>
+</div>
+ <span class="bounce" style="margin-left: 210px;">Select Process For Workflow</span>
+
+}
+
+
+
+
+@if (showDeleteWorkflowDialog) {
+        <app-delete-dialog
+          [message]="'Are you sure you want to Delete ?'"
+          [icon]="'assets/icons/question.svg'"
+          (confirm)="confirmDeleteWorkflow()"
+          (cancel)="cancelDeleteWorkflow()"
+        ></app-delete-dialog>
+        }
+      </div>
+    </app-div-two-equal-partition>
+    <app-fab-button [tooltip]="'Add Workflow'" [icon]="'add'" (click)="addWorkflowDialog()">
+    </app-fab-button>
+  </div>
+  } @if(selectedTabIndex === 3 && levels){
+  <div [@fadeIn]>
+    <app-div-one-partition>
+      <div panel-body>
+        @if(listOfLevels.length > 0){
+        <app-table
+          [dataSource]="dataSource"
+          [displayedColumns]="tableConfig.displayedColumns"
+          [columnHeaderMap]="tableConfig.columnHeaderMap"
+          [showEdit]="true"
+          [showDelete]="true"
+          (editEvent)="editLevelDialog($event)"
+          (deleteEvent)="onRequestToDeleteLevel($event)"
+          (search)="onSearch($event)"
+        >
+        </app-table>
+
+        } @if(listOfLevels.length === 0){
+        <app-no-data-found message="No Level Found"></app-no-data-found>
+        } @if (showDeleteLevel) {
+        <app-delete-dialog
+          [message]="'Are you sure you want to Delete ?'"
+          [icon]="'assets/icons/question.svg'"
+          (confirm)="deleteLevel()"
+          (cancel)="oncDeleteCancelled()"
+        ></app-delete-dialog>
+        }
+      </div>
+    </app-div-one-partition>
+    <app-fab-button [tooltip]="'Add Level'" [icon]="'add'" (click)="addLevelDialog()">
+    </app-fab-button>
+  </div>
+  }
+</app-sidenav>
+<app-footer></app-footer>
